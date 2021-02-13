@@ -1,6 +1,6 @@
 import React from 'react';
 import { Logo } from '../../../theme/Logo';
-import { MenuWrapper } from './styles/MenuWrapper';
+import { MenuWrapper } from '../Menu/styles/MenuWrapper';
 
 export default function Menu(){
     return(
