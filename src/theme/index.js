@@ -42,6 +42,7 @@ export const colors = {
 };
 
 export default {
+  typographyVariants,
   colors,
   borderRadius: '12px',
   transition: '200ms ease-in-out',
