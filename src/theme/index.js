@@ -1,3 +1,5 @@
+import { typographyVariants } from './typographyVariants';
+
 export const colors = {
   background: {
     light: {
