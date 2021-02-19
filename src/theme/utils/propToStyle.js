@@ -5,6 +5,12 @@ export function propToStyle(propName) {
   return (props) => {
     const propValue = props[propName];
 
+    if(typeof propValue === 'string' || typeof propValue === 'number'){
+      return{
+        [propName]: propValue
+      }
+    }
+
     if (typeof propValue === 'object') {
       return css`
         ${breakpointsMedia({
