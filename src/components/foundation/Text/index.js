@@ -1,10 +1,9 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
+import get from 'lodash/get';
 import { propToStyle } from '../../../theme/utils/propToStyle';
 import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
-import get from 'lodash/get';
-
 
 const paragraph1 = css`
   ${({ theme }) => css`
@@ -32,14 +31,14 @@ export const TextStyleVariantsMap = {
       line-height: ${theme.typographyVariants.titleXS.lineHeight};
     `}
     ${breakpointsMedia({
-      md: css`
+    md: css`
         ${({ theme }) => css`
           font-size: ${theme.typographyVariants.title.fontSize};
           font-weight: ${theme.typographyVariants.title.fontWeight};
           line-height: ${theme.typographyVariants.title.lineHeight};
         `}
       `,
-    })}
+  })}
   `,
 };
 

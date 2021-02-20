@@ -14,7 +14,7 @@ const ButtonDefault = css`
   background-color: ${({ theme, variant }) => get(theme, `colors.${variant}.color`)};
 `;
 
-export const Button = styled.button `
+export const Button = styled.button`
   border: 0;
   cursor: pointer;
   padding: 12px 26px;
