@@ -31,6 +31,15 @@ export const Button = styled.button`
       ${TextStyleVariantsMap.paragraph1}
     `,
   })}
+  &:disabled {
+    cursor: not-allowed;
+    opacity: .2;
+  }
+  
+  ${({ fullWidth }) => fullWidth && css`
+    width: 100%;
+  `};
+
   ${propToStyle('margin')}
   ${propToStyle('display')}
   ${({ ghost }) => (ghost ? ButtonGhost : ButtonDefault)}
@@ -38,4 +47,14 @@ export const Button = styled.button`
   &:focus {
     opacity: .5;
   }
+  ${({ close }) => (close ? ButtonClose : Button)}
+`;
+
+const ButtonClose = css`
+  position: relative;
+  top: 0px;
+  right: -200px;
+  margin: auto;
+  color: ${({ theme, variant }) => get(theme, `colors.${variant}.color`)};
+  background-color: transparent;
 `;

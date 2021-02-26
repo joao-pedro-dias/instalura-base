@@ -9,6 +9,7 @@
     "eslint-fix": "eslint **/*.js --ignore-pattern node_modules/ --ignore-pattern out/ --ignore-pattern .next/"
   },
   "dependencies": {
+    "@material-ui/icons": "^4.11.2",
     "eslint": "^7.20.0",
     "framer-motion": "^3.7.0",
     "lodash": "^4.17.20",

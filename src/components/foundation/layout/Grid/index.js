@@ -35,6 +35,10 @@ export const Grid = {
     flex-wrap: wrap;
     margin-right: -16px;
     margin-left: -16px;
+    ${propToStyle('flex')}
+    ${propToStyle('marginLeft')}
+    ${propToStyle('marginRight')}
+    ${propToStyle('justifyContent')}
   `,
   Col: styled.div`
     padding-right: 16px;
@@ -42,7 +46,7 @@ export const Grid = {
     flex-basis: 0;
     flex-grow: 1;
     max-width: 100%;
-    ${function ({ value }) {
+    ${({ value }) => {
     if (typeof value === 'number') {
       return css`
           flex-grow: 0;
@@ -94,7 +98,7 @@ export const Grid = {
         : '',
     });
   }}
-    ${function ({ offset }) {
+    ${({ offset }) => {
     if (typeof offset === 'number') {
       return css`
           margin-left: ${(100 * offset) / 12}%;
@@ -132,5 +136,6 @@ export const Grid = {
     ${propToStyle('alignItems')}
     ${propToStyle('justifyContent')}
     ${propToStyle('flexDirection')}
+    ${propToStyle('paddingRight')}
   `,
 };
