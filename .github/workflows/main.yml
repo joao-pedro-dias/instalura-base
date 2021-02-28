@@ -33,4 +33,4 @@ jobs:
       - name: Install de dependencias
         run: npm install
       - name: Roda o Linter!
-        run: npm lint
+        run: npx lint
