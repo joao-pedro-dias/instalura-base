@@ -1,15 +1,27 @@
 import React from 'react';
+import { Lottie } from '@crello/react-lottie';
+import errorAnimation from '../FormCadastro/animation/error.json';
+import successAnimation from '../FormCadastro/animation/success.json';
 import { Button } from '../../commons/Button';
 import TextField from '../../forms/TextField';
 import { Box } from '../../foundation/layout/Box';
 import { Grid } from '../../foundation/layout/Grid';
 import Text from '../../foundation/Text';
 
+const formStates = {
+  DEFAULT: 'DEFAULT',
+  LOADING: 'LOADING',
+  DONE: 'DONE',
+  ERROR: 'ERROR',
+};
+
 function FormContent() {
-  const [isModalClose] = React.useState(true);
+  const [isFormSubmited, setIsFormSubmited] = React.useState(false);
+  const [submissionStatus, setSubmissionStatus] = React.useState(formStates.DEFAULT);
+
   const [userInfo, setUserInfo] = React.useState({
-    usuario: 'omariosouto',
-    email: 'devsoutinho@gmail.com',
+    usuario: 'devpedrinho',
+    name: 'João Pedro',
   });
 
   function handleChange(event) {
@@ -20,18 +32,49 @@ function FormContent() {
     });
   }
 
-  const isFormInvalid = userInfo.usuario.length === 0 || userInfo.email.length === 0;
+  const isFormInvalid = userInfo.usuario.length === 0 || userInfo.name.length === 0;
 
   return (
     <form
       onSubmit={(event) => {
         event.preventDefault();
         console.log('O formulário ta pronto, vamos cadastrar de fato o usuario');
+
+        setIsFormSubmited(true);
+
+        // Data Transfer Object
+        const userDTO = {
+          username: userInfo.usuario,
+          name: userInfo.name,
+        };
+
+        fetch('https://instalura-api.vercel.app/api/users', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(userDTO),
+        })
+          .then((respostaDoServidor) => {
+            if (respostaDoServidor.ok) {
+              return respostaDoServidor.json();
+            }
+            
+            throw new Error('Não foi possível cadastrar o usuário agora :(');
+          })
+          .then((respostaConvertidaEmObjeto) => {
+            setSubmissionStatus(formStates.DONE);
+            // eslint-disable-next-line no-console
+            console.log(respostaConvertidaEmObjeto);
+          })
+          .catch((error) => {
+            setSubmissionStatus(formStates.ERROR);
+            // eslint-disable-next-line no-console
+            console.error(error);
+          });
       }}
     >
-    <Button type="button" close>
-      Fechar
-    </Button>
+
       <Text
         variant="title"
         tag="h1"
@@ -45,15 +88,15 @@ function FormContent() {
         color="tertiary.light"
         marginBottom="32px"
       >
-        Você está a um passo de saber tudoo que está
+        Você está a um passo de saber tudo o que está
         rolando no bairro, complete seu cadastro agora!
       </Text>
 
       <div>
         <TextField
-          placeholder="Email"
-          name="email"
-          value={userInfo.email}
+          placeholder="Name"
+          name="name"
+          value={userInfo.name}
           onChange={handleChange} // capturadores, pegadores de ação
         />
       </div>
@@ -75,6 +118,33 @@ function FormContent() {
       >
         Cadastrar
       </Button>
+
+      {isFormSubmited && submissionStatus === formStates.DONE && (
+        <Box
+          display="flex"
+          justifyContent="center"
+        >
+          <Lottie
+            width="150px"
+            height="150px"
+            config={{ animationData: successAnimation, loop: false, autoplay: true }}
+          />
+        </Box>
+      )}
+
+      {isFormSubmited && submissionStatus === formStates.ERROR && (
+        <Box
+          display="flex"
+          justifyContent="center"
+        >
+          <Lottie
+            width="150px"
+            height="150px"
+            config={{ animationData: errorAnimation, loop: false, autoplay: true }}
+          />
+        </Box>
+      )}
+      
     </form>
   );
 }
