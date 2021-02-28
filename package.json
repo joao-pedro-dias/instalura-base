@@ -14,7 +14,6 @@
     "@crello/react-lottie": "0.0.11",
     "@material-ui/icons": "^4.11.2",
     "framer-motion": "^3.7.0",
-    "husky": "^5.1.1",
     "lodash": "^4.17.20",
     "next": "latest",
     "prop-types": "^15.7.2",
@@ -27,11 +26,10 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "yarn lint",
+      "pre-push": "npm lint",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
-  "license": "MIT",
   "devDependencies": {
     "@commitlint/cli": "^12.0.1",
     "@commitlint/config-conventional": "^12.0.1",
@@ -41,11 +39,13 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.22.0",
-    "eslint-plugin-react-hooks": "^1.7.0"
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "husky": "^5.1.1"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  }
+  },
+  "license": "MIT"
 }
