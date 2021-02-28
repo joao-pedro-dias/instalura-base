@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default-member */
 import { css } from 'styled-components';
 import theme from '../index';
 

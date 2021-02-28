@@ -1,12 +1,12 @@
 import React from 'react';
 import { Lottie } from '@crello/react-lottie';
-import errorAnimation from '../FormCadastro/animation/error.json';
-import successAnimation from '../FormCadastro/animation/success.json';
+import errorAnimation from './animation/error.json';
+import successAnimation from './animation/success.json';
 import { Button } from '../../commons/Button';
 import TextField from '../../forms/TextField';
 import { Box } from '../../foundation/layout/Box';
 import { Grid } from '../../foundation/layout/Grid';
-import Text from '../../foundation/Text';
+import { Text } from '../../foundation/Text';
 
 const formStates = {
   DEFAULT: 'DEFAULT',
@@ -38,7 +38,6 @@ function FormContent() {
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        console.log('O formulário ta pronto, vamos cadastrar de fato o usuario');
 
         setIsFormSubmited(true);
 
@@ -59,7 +58,6 @@ function FormContent() {
             if (respostaDoServidor.ok) {
               return respostaDoServidor.json();
             }
-            
             throw new Error('Não foi possível cadastrar o usuário agora :(');
           })
           .then((respostaConvertidaEmObjeto) => {
@@ -144,7 +142,6 @@ function FormContent() {
           />
         </Box>
       )}
-      
     </form>
   );
 }

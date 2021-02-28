@@ -47,14 +47,13 @@ export const Button = styled.button`
   &:focus {
     opacity: .5;
   }
-  ${({ close }) => (close ? ButtonClose : Button)}
 `;
 
-const ButtonClose = css`
-  position: relative;
-  top: 0px;
-  right: -200px;
-  margin: auto;
-  color: ${({ theme, variant }) => get(theme, `colors.${variant}.color`)};
-  background-color: transparent;
-`;
+// const ButtonClose = css`
+//   position: relative;
+//   top: 0px;
+//   right: -200px;
+//   margin: auto;
+//   color: ${({ theme, variant }) => get(theme, `colors.${variant}.color`)};
+//   background-color: transparent;
+// `;
