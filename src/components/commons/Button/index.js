@@ -61,6 +61,7 @@ export function Button({ href, children, ...props }) {
     <ButtonWrapper
       as={tag}
       href={href}
+      // eslint-disable-next-line react/jsx-props-no-spreading
       {...props}
     >
       {children}
