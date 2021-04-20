@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import NextLink from 'next/link';
 import styled from 'styled-components';
@@ -18,14 +19,15 @@ const StyledLink = styled.a`
   }
 `;
 
-export const Link = ({ children, href, ...props }) => (
-  <NextLink href={href} passHref>
-    {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-    <StyledLink {...props}>
-      {children}
-    </StyledLink>
-  </NextLink>
-);
+export default function Link({ href, children, ...props }) {
+  return (
+    <NextLink href={href} passHref>
+      <StyledLink {...props}>
+        {children}
+      </StyledLink>
+    </NextLink>
+  );
+}
 
 Link.propTypes = {
   href: PropTypes.string.isRequired,

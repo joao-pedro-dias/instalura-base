@@ -5,43 +5,51 @@ import { Text } from '../../foundation/Text';
 import { Button } from '../Button';
 import MenuWrapper from './styles/MenuWrapper';
 
+const links = [
+  {
+    texto: 'Home',
+    url: '/',
+  },
+  {
+    texto: 'Perguntas frequentes',
+    url: '/faq',
+  },
+  {
+    texto: 'Sobre',
+    url: '/sobre',
+  },
+];
 export default function Menu({ onCadastrarClick }) {
   return (
     <MenuWrapper>
       <MenuWrapper.LeftSide>
-        {' '}
-        {/* MenuWrapper.LeftSide */}
         <Logo />
       </MenuWrapper.LeftSide>
-      <MenuWrapper.CentralSide as="ul">
-        {' '}
-        {/* MenuWrapper.CentralSide */}
-        {[
-          { url: '/', name: 'Home' },
-          { url: '/faq', name: 'Perguntas Frequentes' },
-          { url: '/sobre', name: 'Sobre' },
-        ].map((link) => (
+      <MenuWrapper.CentralSide>
+        {links.map((link) => (
           <li key={link.url}>
+            {/* <NextLink href={link.url}>
+              <a>
+                {link.texto}
+              </a>
+            </NextLink> */}
             <Text variant="smallestException" tag="a" href={link.url}>
-              {link.name}
+              {link.texto}
             </Text>
           </li>
         ))}
       </MenuWrapper.CentralSide>
       <MenuWrapper.RightSide>
-        {' '}
-        {/* MenuWrapper.RightSide */}
-        <Button type="button" ghost variant="secondary.main" href="/app/login">
+        <Button ghost variant="secondary.main" href="/app/login">
           Entrar
         </Button>
-        <Button type="button" variant="primary.main" onClick={onCadastrarClick}>
+        <Button variant="primary.main" onClick={onCadastrarClick}>
           Cadastrar
         </Button>
       </MenuWrapper.RightSide>
     </MenuWrapper>
   );
 }
-
 Menu.propTypes = {
   onCadastrarClick: PropTypes.func.isRequired,
 };

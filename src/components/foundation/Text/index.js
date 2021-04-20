@@ -5,7 +5,7 @@ import get from 'lodash/get';
 import styled, { css } from 'styled-components';
 import { propToStyle } from '../../../theme/utils/propToStyle';
 import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
-import { Link } from '../../commons/Link';
+import Link from '../../commons/Link';
 
 export const TextStyleVariantsMap = {
   paragraph1: css`
